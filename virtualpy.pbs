@@ -1,0 +1,48 @@
+#################################################################
+###### Create a python 3.3 virtual environment
+#################################################################
+#! /bin/bash -l
+#
+### Name the job
+#PBS -N py3_virtual_env
+#
+### Set the number of nodes and cores to use for the job
+#PBS -l nodes=1:ppn=12
+#
+### Type of job to run
+#PBS -q generic
+#
+### Path to start this script from
+#PBS -d /path
+#
+### Path to output file
+#PBS -o /path
+#
+### Path to the output error
+#PBS -e /path
+#
+### Combine the output and error file
+#PBS -j oe
+#
+### Email me when the job is done
+#PBS -m e 
+#
+##################################################################
+###### Write program to run here 
+##################################################################
+
+module load python/3.3.4
+
+pyvenv .virtual/py3
+
+echo 'alias py3="source ~/.virtual/py3/bin/activate"' >> .bash_rc
+
+source .virtual/py3/bin/activate
+
+python ez_setup.py
+
+easy_install pip
+
+pip install numpy scipy cython pandas sklearn lmfit ipython networkx
+
+
