@@ -31,18 +31,23 @@
 ###### Write program to run here 
 ##################################################################
 
+# Load the python 3 module on ACISS
 module load python/3.3.4
 
+# Create a Python 3 virtual environment
 pyvenv .virtual/py3
 
+# Add an alias that allows easy call to activate virtual env.
 echo 'alias py3="source ~/.virtual/py3/bin/activate"' >> .bash_rc
 
+# Activate the environment
 source .virtual/py3/bin/activate
 
+# Install pip
 python ez_setup.py
-
 easy_install pip
 
+# Pip install scientific python packages
 pip install numpy scipy cython pandas sklearn lmfit ipython networkx
 
 
